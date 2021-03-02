@@ -1,0 +1,224 @@
+@use "../Abstracts" as *;
+
+// Body, HTML, Root para usar 100% da tela
+html,
+body,
+#root {
+  min-height: 100%;
+  height: 100%;
+}
+
+// Main
+.main {
+  width: 100%;
+  height: 100%;
+  background-color: $main-bg-color;
+  font-family: $font-main;
+  padding: 20px;
+  @include alinharCentro(column);
+  justify-content: end;
+  min-height: 750px;
+  position: relative;
+
+  .main_header {
+    width: $main-container-largura;
+    border-radius: $main-container-border-radius;
+    background-color: $main-container-bg-color;
+    font-family: $font-main-header;
+    font-size: $font-size-main-header;
+    margin: 5px 0;
+    margin-bottom: 15px;
+    padding: 20px;
+    text-align: center;
+    color: $main-font-color;
+    box-shadow: 0 0 7px 3px $shadow-color;
+  }
+
+  .main_container {
+    background-color: $main-container-bg-color;
+    width: $main-container-largura;
+    padding: 30px;
+    border-radius: $main-container-border-radius;
+    position: relative;
+    box-shadow: 0 0 7px 3px $shadow-color;
+
+    .header {
+      font-size: $font-size-main-container-header;
+      margin-bottom: 20px;
+      font-weight: normal;
+    }
+
+    .items {
+      border: 2px solid $items-border-outside;
+      border-radius: $main-container-border-radius;
+
+      .item {
+        display: flex;
+        height: $item-altura;
+        padding: 0 20px;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+
+        .info_produto {
+          display: flex;
+          align-items: center;
+          height: 100%;
+          width: 80%;
+        }
+
+        .quantidade {
+          background-color: $badge-bg-color;
+          color: $font-color-badge;
+          padding: 2px 10px;
+          border-radius: $badge-border-radius;
+          border: none;
+          margin-right: 20px;
+        }
+
+        .nome {
+          font-size: $font-size-product;
+          color: $product-font-color;
+          text-align: justify;
+          word-wrap: break-word;
+          max-width: 90%;
+        }
+
+        .buttons {
+          display: none;
+          flex-direction: column;
+          position: absolute;
+          right: 10px;
+          display: none;
+
+          .btn_increment {
+            background-color: $btn-increment-bg-color;
+            color: $btn-increment-font-color;
+            font-size: $font-size-btn;
+            border: none;
+            padding: 5px;
+            border-top-right-radius: $buttons-border-radius;
+            border-top-left-radius: $buttons-border-radius;
+          }
+
+          .btn_decrement {
+            background-color: $btn-decrement-bg-color;
+            color: $btn-decrement-font-color;
+            font-size: $font-size-btn;
+            border: none;
+            padding: 5px;
+            border-bottom-right-radius: $buttons-border-radius;
+            border-bottom-left-radius: $buttons-border-radius;
+          }
+        }
+
+        &:hover {
+          .buttons {
+            display: flex;
+          }
+        }
+      }
+
+      .item ~ .item {
+        border-top: 1px solid $items-border-inside;
+      }
+    }
+
+    .whenEmptyText {
+      margin: 20px 0;
+      font-size: $font-size-empty;
+      background-color: $empty-bg-color;
+      color: $empty-font-color;
+      padding: 10px;
+    }
+
+    .btn_add {
+      background-color: $btn-add-bg-color;
+      color: $btn-add-font-color;
+      font-size: $font-size-btn-add;
+      border: none;
+      border-radius: $btn-add-border-radius;
+      padding: 5px 15px;
+      position: absolute;
+      top: 35px;
+      right: 20px;
+    }
+
+    .inputsNovoProduto {
+      display: flex;
+      flex-direction: column;
+
+      label {
+        margin: 20px 0;
+        margin-top: 40px;
+        font-size: $font-size-label;
+      }
+
+      input {
+        padding: 20px 30px;
+        border-radius: $novo-produto-border-radius;
+        font-size: $font-size-novo-produto;
+      }
+    }
+  }
+
+  @include mobile {
+    padding: 0;
+    width: 100vw;
+    overflow-x: hidden;
+    min-height: 700px;
+    position: relative;
+
+    .main_header {
+      width: 100vw;
+      box-shadow: none;
+      border-radius: 0;
+      font-size: 1rem;
+      position: absolute;
+      top: 0;
+    }
+
+    .main_container {
+      width: 100vw;
+      box-shadow: none;
+      border-radius: 0;
+      padding: 15px;
+      position: absolute;
+      top: 15%;
+
+      .header {
+        padding: 0 10px;
+        margin-bottom: 15px;
+      }
+
+      .btn_add {
+        top: 20px;
+      }
+    }
+  }
+
+  @include tablet {
+    width: 100vw;
+    overflow: hidden;
+    min-height: 700px;
+    position: relative;
+
+    .main_header {
+      width: 90vw;
+      box-shadow: none;
+      border-radius: 0;
+      font-size: 1.1rem;
+      position: absolute;
+      top: 2%;
+    }
+
+    .main_container {
+      width: 90vw;
+      box-shadow: none;
+      border-radius: 0;
+      position: absolute;
+      top: 10%;
+    }
+  }
+}

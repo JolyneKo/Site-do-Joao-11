@@ -1,0 +1,45 @@
+@use '../Abstracts' as *;
+
+// Menu
+.menu {
+  background-color: $menu-bg-color;
+  width: 100%;
+  height: $menu-altura;
+  position: absolute;
+  font-family: $font-menu;
+  overflow: hidden;
+
+  .links,
+  .navigation {
+    display: flex;
+    height: 100%;
+    @include alinharCentro(row);
+    justify-content: space-around;
+
+    .link {
+      text-align: center;
+      line-height: 1.2rem;
+      padding: 0 10px;
+      @include alinharCentro(row);
+    }
+
+    a {
+      color: white;
+      text-decoration: none;
+      font-size: $font-size-menu;
+    }
+  }
+
+  // Versão Tablet
+  @include tablet {
+    .links {
+      .link {
+        padding: 40px;
+      }
+
+      a {
+        font-size: $font-size-menu-tablet;
+      }
+    }
+  }
+}
